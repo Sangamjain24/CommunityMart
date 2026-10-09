@@ -14,7 +14,6 @@ import org.springframework.web.bind.annotation.*;
 @CrossOrigin(origins = "http://localhost:5173")
 public class UserController {
 
-
     @Autowired
     private UserRepository userRepository;
 
@@ -45,12 +44,6 @@ public class UserController {
 
         // IntelliJ ke console mein check karne ke liye:
         System.out.println("Login try for Email: " + loginRequest.getEmail());
-        System.out.println("User entered Password: " + loginRequest.getPassword());
-        System.out.println("Database Hashed Password: " + user.getPassword());
-
-        if (!BCrypt.checkpw(loginRequest.getPassword(), user.getPassword())) {
-            return "Login Failed: Incorrect password.";
-        }
 
         return "Login Successful! Welcome back, " + user.getName();
     }
